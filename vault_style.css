@@ -1,0 +1,126 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    perspective: 1000px; /* Gibt dem Raum Tiefe */
+}
+
+.vault-box {
+    display: flex; /* Aktiviert Flexbox */
+    flex-direction: column; /* Stapelt Text und Input untereinander */
+    justify-content: center; /* Zentriert vertikal */
+    align-items: center; /* Zentriert horizontal */
+    
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 20px; /* Etwas mehr Padding für den Look */
+    width: 400px; /* Deine gewünschte Breite */
+    height: 150px; /* Deine gewünschte Höhe */
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    
+    /* Damit die Box selbst auch mittig auf dem Bildschirm ist */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1); /* Macht das Zurückgleiten edler */
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.vault-title {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+.input-group {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05); /* Dezenter dunkler Hintergrund */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px; /* Die Pillen-Form */
+    padding: 6px;
+    width: 350px;
+    backdrop-filter: blur(10px); /* Glas-Effekt passend zu deinem Hauptdesign */
+    transition: all 0.3s ease;
+}
+.input-group:focus-within {
+    border-color: #00d4ff;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+#password-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px 20px;
+    flex-grow: 1;
+    font-size: 1rem;
+}
+#submit-btn {
+    background: linear-gradient(to bottom left,rgba(0, 0, 0, 0.9),rgba(46, 29, 194, 0.9));
+    border: 1px solid rgba(0, 212, 255, 0.5); /* Ein leichter blauer Rahmen */
+    color: white;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+#submit-btn:hover {
+    /* background: #00d4ff; */
+    /* color: white; */
+    transform: scale(1.15);
+}
+/* Error Message */
+#error-msg {
+    color: #ff4444;
+    font-size: 0.8rem;
+    margin-top: 15px;
+    display: none;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+}
+
+
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Hinter den Text legen */
+    overflow: hidden;
+}
+#vault-bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Video füllt den Screen ohne Verzerrung */
+    filter: blur(10px) brightness(0.8); /* Hier stellst du die Unschärfe und Dunkelheit ein */
+    transform: scale(1.1); /* Verhindert weiße Ränder durch den Blur */
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+}
+.input-group {
+    position: relative;
+    z-index: 10; /* Höher als die Box selbst */
+    transform: translateZ(20px); /* Schiebt das Feld im 3D-Raum nach vorne */
+}
+
+#password-input {
+    cursor: text; /* Erzwingt den Text-Cursor */
+    pointer-events: auto !important; /* Stellt sicher, dass Klicks durchgehen */
+}

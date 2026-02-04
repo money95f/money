@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECURE AREA - DASHBOARD</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+    <div class="scanlines"></div>
+    
+    <header class="top-bar">
+        <div class="status-indicator">
+            <span class="dot"></span> SYSTEM ONLINE 
+            <span id="ip-display">FETCHING SOURCE_IP...</span>
+        </div>
+        <a href="../vault_index.html" class="logout-btn">LOGOUT</a>
+    </header>
+
+    <main class="main-content">
+        <div class="dashboard-grid">
+            <a href="html/dc_vip.html" class="mini-card large">
+                <div class="tag">Discord</div>
+                <h3>Discord Infos</h3>
+                <p>Discord_Code</p>
+            </a>
+
+            <a href="html/data.html" class="mini-card large">
+                <div class="tag">DECRYPT</div>
+                <h3>DATA</h3>
+                <p>STORAGE_V1</p>
+            </a>
+        </div>
+    </main>
+
+    <script src="script/script.js"></script>
+</body>
+</html>

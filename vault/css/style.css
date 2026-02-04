@@ -1,0 +1,395 @@
+@font-face {
+  font-family: terminus; /* set name */
+  src: url(../../assets/fonts/Terminus.ttf); /* url of the font */
+}
+
+.dashboard-body {
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+    display: block; /* Anders als die Zentrierung auf der Startseite */
+    overflow-y: auto;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: #00ff41;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    box-shadow: 0 0 10px #00ff41;
+}
+
+.logout-btn {
+    color: var(--error);
+    text-decoration: none;
+    border: 1px solid var(--error);
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: var(--error);
+    color: white;
+}
+
+#ip-display {
+    display: inline-block; /* Wichtig für die Skalierung */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+    font-family: 'Courier New', monospace;
+    color: rgba(0, 212, 255, 0.7);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Das Raster, das die Karten ordnet */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Sehr schmale Spalten */
+    gap: 20px;
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Die kompakte Mini-Karte */
+.mini-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Kleiner Text-Tag oben */
+.tag {
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: #00d4ff;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+/* Kompakte Icons */
+.mini-card i {
+    font-size: 1.5rem;
+    color: #00d4ff;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Texte verkleinern */
+.mini-card h3 {
+    font-size: 0.9rem;
+    margin: 0 0 5px 0;
+    letter-spacing: 1px;
+}
+
+.mini-card p {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+/* Hover-Effekt wie bei der Vault-Box */
+.mini-card:hover {
+    transform: scale(1.08) translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #00d4ff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 
+                0 0 15px rgba(0, 212, 255, 0.1);
+}
+
+.mini-card:hover i {
+    transform: scale(1.1);
+    color: #fff;
+}
+
+.body1{
+    background-color: black;
+    color: #2e1dc2;
+    text-align: center;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.soon{
+    font-size: 3em;
+    font-family: terminus;
+    position: absolute;
+    text-align: center;
+    top: 10%;
+}
+.soon1{
+    font-size: 4em;
+    font-family: terminus;
+    color: #2e1dc2;
+    text-align: center;
+}
+.back{
+    position: absolute;
+    top: 80%;
+    font-size: 1.5em;
+    font-family: terminus;
+    color: #2e1dc2;
+}
+
+/* Den Body für die Zentrierung vorbereiten */
+.dashboard-body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Zentriert die Box horizontal */
+    align-items: center;     /* Zentriert die Box vertikal */
+    background-color: #050505;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Der Header muss aus dem Flex-Fluss raus und oben fixiert werden */
+.top-bar {
+    position: absolute; /* Fixiert den Header unabhängig von der Box */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box; /* Wichtig, damit Padding das Layout nicht sprengt */
+    z-index: 100; /* Immer über der Box */
+}
+
+/* Die VIP Box (Bleibt durch Flexbox im Body automatisch in der Mitte) */
+.vip-mini-box {
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+    z-index: 10;
+}
+
+/* Styling für die Texte innerhalb der Box */
+.vip-header h1 {
+    font-size: 1.2rem;
+    color: #f0f0f0; /* Edles Silber-Weiß */
+    letter-spacing: 2px;
+    margin: 10px 0;
+}
+
+.desc {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-bottom: 20px;
+}
+
+.copy-box {
+    background: #000;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.copy-box:hover {
+    border-color: #00ff41;
+}
+
+#target-code {
+    color: #00ff41;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+/* Die Box klickbar machen */
+.copy-box {
+    background: #000;
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000; /* Stellt sicher, dass kein anderes Element den Klick abfängt */
+    transition: all 0.2s;
+}
+
+/* Der Text ganz unten in der Box */
+.role-info {
+    font-size: 0.8rem;
+    color: #ffffff; /* Hier die Farbe auf Weiß ändern */
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+.role-tag {
+    color: #00ff41; /* Money-Grün für das @MONEY */
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+}
+
+/* Falls die Überschrift auch zu dunkel ist */
+.vip-header h1 {
+    color: #f0f0f0 !important;
+}
+
+.back1{
+    position: absolute;
+    top: 70%;
+    font-size: 1.5em;
+    font-family: terminus;
+    color: #00ff41;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+}
+.back1:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+}
+
+/* --- DEINE BESTEHENDEN REGELN --- */
+@font-face {
+  font-family: terminus;
+  src: url(../../assets/fonts/Terminus.ttf);
+}
+
+.dashboard-body {
+    background: radial-gradient(circle at center, #111 0%, #000 100%);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #050505;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+}
+
+.top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    z-index: 100;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: white;
+}
+
+/* --- HIER SIND DIE ANPASSUNGEN FÜR GRÖSSERE BOXEN --- */
+
+.main-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-grid {
+    display: grid;
+    /* Spalten sind jetzt breiter (min 240px statt 160px) */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 30px; /* Mehr Abstand zwischen den großen Boxen */
+    padding: 40px;
+    width: 100%;
+    max-width: 1000px; /* Gesamtes Grid darf breiter sein */
+    margin: 0 auto;
+}
+
+.mini-card.large {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px; /* Etwas runder für die Größe */
+    padding: 45px 30px; /* Deutlich mehr Innenabstand für Volumen */
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 90px; /* Mindesthöhe für eine wuchtige Optik */
+}
+
+.mini-card.large h3 {
+    font-size: 1.4rem; /* Größere Schrift */
+    margin: 15px 0 10px 0;
+    letter-spacing: 2px;
+}
+
+.mini-card.large p {
+    font-size: 0.9rem; /* Größere Beschreibung */
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.tag {
+    font-size: 10px; /* Tag etwas lesbarer */
+    padding: 3px 10px;
+    margin-bottom: 20px;
+}
+.mini-card:hover { transform: scale(1.05) translateY(-10px); border-color: #00d4ff; box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(0, 212, 255, 0.2); }
+
+.main-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    /* ÄNDERUNG HIER: */
+    padding-bottom: 15vh; /* Schiebt alles um 15% der Bildschirmhöhe nach oben */
+}
+
+/* ODER alternativ direkt am Grid: */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    
+    /* ZUSATZ: */
+    transform: translateY(-50px); /* Schiebt das Grid exakt 50px nach oben */
+}

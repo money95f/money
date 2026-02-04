@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@money.0_</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="48x48"  href="assets/pictures/money2.png">
+</head>
+<body>
+
+    <div id="enter-screen">
+        <div class="typewriter"><h1>click to enter...</h1></div>
+    </div>
+
+    <video id="bg-video" loop muted><source src="assets/video/YTDown.com_YouTube_Ken-Carson-Money-Spread-Official-Music-V_Media_bYIODnKGNdg_001_1080p.mp4" type="video/mp4"></video>
+    <div id="money-rain-container"></div>
+
+    <div class="screen-volume glass-box-mini hidden-ui" id="volume-box">
+        <i class="fa-solid fa-volume-high" id="volume-icon"></i>
+        <div class="volume-bar-container">
+            <input type="range" min="0" max="100" value="100" id="volume-slider">
+        </div>
+    </div>
+    <div id="text-box" class="glass-box hidden-ui">
+        <div class="box-image-container">
+            <img src="assets/pictures/money1.png" alt="Profilbild" class="center-image">
+        </div>
+        <div class="username-wrapper">
+            <h2 id="username">Money</h2>
+            <div id="sparkle-container"></div>
+        </div>
+        <p class="description">
+            <div class="decot-images">
+                <img src="assets/pictures/left.gif" alt="Left Decor" class="decor-image">
+                <a href="https://discord.gg/rANBQTRMqu"><img src="assets/pictures/dc.png" alt="Discord Logo" class="logo-image"></a>
+                <a href="vault_index.html"><img src="assets/pictures/money3.png" alt="Vault Logo" class="logo-image1"></a>
+                <img src="assets/pictures/right.gif" alt="Right Decor" class="decor-image">
+            </div>
+        </p>
+        <div class="view-counter">
+            <i class="fa-solid fa-eye"></i> <span id="view-count">0</span>
+        </div>
+    </div>
+
+    <div id="audio-box" class="glass-box hidden-ui">
+        <div class="audio-player">
+            <img src="assets/cover.jpg" alt="Cover" class="album-cover">
+            <div class="player-content">
+                <div class="song-info">
+                    <span id="artist">Künstler</span> - <span id="title">Titel</span>
+                </div>
+                <div class="player-controls">
+                    <i class="fa-solid fa-backward-step" id="prev-btn"></i>
+                    <i class="fa-solid fa-play" id="play-pause-btn"></i>
+                    <i class="fa-solid fa-forward-step" id="next-btn"></i>
+                </div>
+                <div class="progress-wrapper">
+                    <input type="range" id="progress-bar" value="0" min="0" max="100">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

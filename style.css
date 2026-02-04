@@ -1,0 +1,370 @@
+@font-face {
+  font-family: terminus; /* set name */
+  src: url(assets/fonts/Terminus.ttf); /* url of the font */
+}
+@font-face {
+  font-family: bit; /* set name */
+  src: url(assets/fonts/COURE.FON); /* url of the font */
+}
+/* Standard Cursor für die ganze Seite */
+html, body {
+    cursor: url('assets/pictures/money-cursor.png'), auto;
+}
+
+/* Cursor für alle klickbaren Elemente (wichtig!) */
+a, 
+button, 
+#volume-icon, 
+#volume-slider, 
+#play-pause-btn, 
+#next-btn, 
+#prev-btn, 
+#enter-screen,
+.glass-box {
+    cursor: pointer;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI',
+    sans-serif;
+}
+
+body {
+    background-color: #000;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+#enter-screen {
+    position: fixed;
+    inset: 0;
+    background: black;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.typewriter h1 {
+    font-size: 1.5rem;
+    overflow: hidden;
+    border-right: 3px solid #8f8f8f;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 2s steps(20,end) forwards;
+    font-family: terminus;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+#bg-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    display: none;
+}
+
+.hidden-ui {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1.5s ease;
+    pointer-events: none;
+}
+
+.show-ui {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Box Design */
+.glass-box,
+.glass-box-mini {
+    background: linear-gradient(to bottom left,#000000,#2e1dc2);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    border-radius: 20px;
+}
+
+.glass-box {
+    position: absolute;
+    width: 650px;
+    padding: 30px;
+}
+
+#text-box {
+    top: 15%;
+    text-align: center;
+}
+
+#audio-box {
+    bottom: 10%;
+}
+
+/* Volume Box (Ausklappbar & Clean) */
+.glass-box-mini {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    transition: width 0.4s;
+}
+
+#volume-icon {
+    font-size: 1.4rem;
+    cursor: pointer;
+    background: linear-gradient(to bottom,
+    #00d4ff,
+    #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.volume-bar-container {
+    width: 0;
+    overflow: hidden;
+    transition: 0.4s ease;
+    margin-left: 0;
+}
+
+.glass-box-mini:hover .volume-bar-container,
+.glass-box-mini.active .volume-bar-container {
+    width: 130px;
+    margin-left: 15px;
+}
+
+/* Volume Slider Basis */
+#volume-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: rgba(255,
+    255,
+    255,
+    0.1);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+/* Der sichtbare Balken */
+#volume-slider::-webkit-slider-runnable-track {
+    height: 8px;
+    border-radius: 5px;
+    background: linear-gradient(to right,
+    #00d4ff 0%,
+    #2e1dc2 var(--value,100%),rgba(255,255,255,0.1) var(--value,100%));
+}
+
+/* DER FIX: Der unsichtbare Greif-Punkt */
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: transparent;
+    cursor: pointer;
+    margin-top: -6px;
+    border: none;
+}
+
+/* Für Firefox */
+#volume-slider::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Sparkles */
+.username-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#username {
+    font-size: 2.5rem;
+    text-shadow: 0 0 20px #2e1dc2;
+    z-index: 10;
+    position: relative;
+}
+
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #fff,
+    0 0 20px #00d4ff,
+    0 0 30px #2e1dc2;
+    pointer-events: none;
+    animation: float-sparkle 2.5s infinite ease-out;
+}
+
+@keyframes float-sparkle {
+    0% {
+        transform: translate(0,
+        0) scale(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+        transform: translate(0,
+        0) scale(1.2);
+    }
+    100% {
+        transform: translate(var(--x),
+        var(--y)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Audio Styles */
+.audio-player {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.album-cover {
+    width: 95px;
+    height: 95px;
+    border-radius: 10px;
+    transition: opacity 0.3s ease-in-out; /* Macht den Wechsel weicher */
+}
+
+.player-content {
+    flex: 1;
+}
+
+.song-info {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#progress-bar {
+    width: 100%;
+    accent-color: #00d4ff;
+    cursor: pointer;
+    border: none;
+}
+
+.view-counter {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+}
+
+.money-icon {
+    position: fixed;
+    top: -50px;
+    width: 35px;
+    z-index: 1;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* Container für das Bild in der Mitte */
+.box-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.center-image {
+    width: 130px; /* Breite des Bildes */
+    object-fit: cover;
+    border-radius: 50%; /* Macht das Bild rund - für eckig einfach auf 10px ändern */
+    border: 2px solid rgba(0, 212, 255, 0.5); /* Ein leichter blauer Rahmen */
+    box-shadow: 0 0 15px rgba(46, 29, 194, 0.6); /* Ein passender Glow-Effekt */
+}
+.center-image:hover {
+  transform: scale(1.1);
+  transition: transform 0.4s;
+}
+.decor-image {
+    width: 40px; /* Größe der Dekobilder */
+    margin: 0 40px;
+    max-width: 10vw; /* Responsive */
+    padding-top: 50px;
+}
+.decor-image:hover {
+  transform: scale(1.5) rotate(1deg);
+  transition: transform 0.4s;
+}
+.logo-image {
+    width: 45px;
+}
+.logo-image:hover {
+  transform: scale(1.5) rotate(1deg);
+  transition: transform 0.4s;
+}
+.logo-image1{
+    width: 65px;
+    padding-left: 20px;
+}
+.logo-image1:hover {
+  transform: scale(1.5) rotate(1deg);
+  transition: transform 0.4s;
+}
+
+.cursor-money {
+    position: absolute;
+    pointer-events: none; /* Wichtig: Man kann nicht darauf klicken */
+    z-index: 10000;
+    animation: money-fall-fast 1.5s linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes money-fall-fast {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* Es fällt 200 Pixel nach unten und driftet leicht zur Seite */
+        transform: translate(var(--drift, 20px), 200px) rotate(360deg);
+        opacity: 0;
+    }
+}
